@@ -4,24 +4,48 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 
 }
+
+<h4>Danh sách sản phẩm</h4>
 @if (Model != null)
 {
-    foreach (var item in Model)
-    {
-        <p>@item.ProductId</p>
-        <p>@item.Name</p>
-    }
-}
-            else
+    <table class="table table-bordered table-striped">
+        <thead >
+            <tr class="bg-dark text-light">
+                <th>Mã sản phẩm</th>
+                <th>Tên sản phẩm</th>
+                <th>Loại sản phẩm</th>
+                <th>Màu sắc</th>
+                <th>Đơn giá</th>
+                <th>Số lượng tồn</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
             {
-                <p>rỗng</p>
+                <tr>
+                    <td>@item.ProductId</td>
+                    <td>@item.Name</td>
+                    <td>@item.Category</td>
+                    <td>@item.Color</td>
+                    <td>@item.UnitPrice</td>
+                    <td>@item.AvailableQuantity</td>
+                </tr>  
             }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>rỗng</p>
+}
 <div class="row">
     <ul id="productDetails" class="col-md-4">
         @*<li class="productId">data[i].productId</li><li class="nameProduct">data[i].name</li><li class="category">data[i].category</li><li class="color">data[i].color</li><li class="unitPrice">data[i].unitPrice</li>*@
     </ul>
 </div>
 <script src="~/lib/jquery/dist/jquery.js"></script>
+
+@*request token to server with jquery*@
 @*<script>
         $(document).ready(function () {
             var token = "Bearer" +" "+ localStorage.getItem('Token');

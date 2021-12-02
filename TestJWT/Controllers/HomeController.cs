@@ -34,11 +34,12 @@ namespace TestJWT.Controllers
             {
                 var result = await _ILoginRequest.Login(user, "https://localhost:44306/api/Token", "");
                 HttpContext.Session.SetString(gettoken.token, result.token);
-                return View(result);
+                return RedirectToAction("product");
             }
             catch (Exception)
             {
-                return BadRequest();
+                ViewBag.status = "Tên tài khoản hoặc mật khẩu không chính xác";
+                return View();
             }
             
         }
