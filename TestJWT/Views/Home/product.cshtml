@@ -1,0 +1,56 @@
+﻿@model IEnumerable<Product>
+@{
+    ViewData["Title"] = "product";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+@if (Model != null)
+{
+    foreach (var item in Model)
+    {
+        <p>@item.ProductId</p>
+        <p>@item.Name</p>
+    }
+}
+            else
+            {
+                <p>rỗng</p>
+            }
+<div class="row">
+    <ul id="productDetails" class="col-md-4">
+        @*<li class="productId">data[i].productId</li><li class="nameProduct">data[i].name</li><li class="category">data[i].category</li><li class="color">data[i].color</li><li class="unitPrice">data[i].unitPrice</li>*@
+    </ul>
+</div>
+<script src="~/lib/jquery/dist/jquery.js"></script>
+@*<script>
+        $(document).ready(function () {
+            var token = "Bearer" +" "+ localStorage.getItem('Token');
+            console.log(token)
+            fetch('https://localhost:44306/api/products', {
+                method: 'GET',
+                headers: {
+                    "Authorization": token
+                }
+            })
+            .then(
+                function (response) {
+                    if (response.status !== 200) {
+                        console.log('Lỗi, mã lỗi ' + response.status);
+                        return;
+                    }
+                    // parse response data
+                    response.json().then(data => {
+                        console.log(data[0].name)
+                        for (var i = 0; i < data.length; i++) {
+                            $('#productDetails').append('<li class="productId">' + data[i].productId + '</li><li class="nameProduct">' + data[i].name + '</li><li class="category">' + data[i].category + '</li><li class="color">' + data[i].color+'</li><li class="unitPrice">' + data[i].unitPrice+'</li>')
+                        }
+                    })
+                }
+            )
+            .catch(err => {
+                console.log('Error :-S', err)
+            });
+        })
+
+    </script>*@
+
